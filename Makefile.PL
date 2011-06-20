@@ -1,6 +1,6 @@
 #!perl -w
 use strict;
-use ExtUtils::MakeMaker qw(WriteMakefile WriteEmptyMakefile);
+use ExtUtils::MakeMaker;
 use Getopt::Long;
 use Config;
 
@@ -13,6 +13,7 @@ GetOptions("incpath=s", \@incpaths,
            "verbose|v" => \$verbose);
 
 our $BUILDING_IMAGER;
+our %IMAGER_LIBS;
 
 my $MM_ver = eval $ExtUtils::MakeMaker::VERSION;
 
@@ -37,7 +38,7 @@ else {
   $opts{TYPEMAPS} = [ Imager::ExtUtils->typemap ];
 
   # Imager required configure through use
-  my @Imager_req = ( Imager => "0.78" );
+  my @Imager_req = ( Imager => "0.82" );
   if ($MM_ver >= 6.46) {
     $opts{META_MERGE} =
       {
@@ -53,12 +54,8 @@ else {
        resources =>
        {
 	homepage => "http://imager.perl.org/",
-	repository =>
-	{
-	 url => "http://imager.perl.org/svn/trunk/Imager/FT2",
-	 web => "http://imager.perl.org/svnweb/public/browse/trunk/Imager/FT2",
-	 type => "svn",
-	},
+	repository => "git://git.imager.perl.org/imager.git",
+	bugtracker => "http://rt.cpan.org/NoAuth/Bugs.html?Dist=Imager",
        },
       };
     $opts{PREREQ_PM} =
@@ -95,21 +92,27 @@ my %probe =
 
 my $probe_res = Imager::Probe->probe(\%probe);
 if ($probe_res) {
+  $IMAGER_LIBS{FT2} = 1;
+
   push @inc, $probe_res->{INC};
   $opts{LIBS} = $probe_res->{LIBS};
-
+  $opts{DEFINE} = $probe_res->{DEFINE};
   $opts{INC} = "@inc";
+  $opts{LDDLFLAGS} = $probe_res->{LDDLFLAGS}
+    if $probe_res->{LDDLFLAGS};
 
   if ($MM_ver > 6.06) {
-    $opts{AUTHOR} = 'Tony Cook <tony@imager.perl.org>';
+    $opts{AUTHOR} = 'Tony Cook <tonyc@cpan.org>';
     $opts{ABSTRACT} = 'FreeType 2 font driver for Imager';
   }
   
   WriteMakefile(%opts);
 }
 else {
+  $IMAGER_LIBS{FT2} = 0;
+
   if ($BUILDING_IMAGER) {
-    WriteEmptyMakefile(%opts);
+    ExtUtils::MakeMaker::WriteEmptyMakefile(%opts);
   }
   else {
     # fail in good way

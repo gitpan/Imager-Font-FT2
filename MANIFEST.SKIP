@@ -14,7 +14,14 @@
 # system
 ^\.svn/
 /\.svn/
+^\.gitignore$
 
 # editor
 ^#
 ~$
+
+# Win32 junk
+\.exe$
+^dll\.(base|exp)$
+^FT2\.def$
+^FT2_def\.old$
