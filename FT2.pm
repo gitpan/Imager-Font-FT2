@@ -5,7 +5,7 @@ use vars qw($VERSION @ISA);
 @ISA = qw(Imager::Font);
 
 BEGIN {
-  $VERSION = "0.82";
+  $VERSION = "0.83";
 
   eval {
     require XSLoader;
@@ -22,7 +22,7 @@ BEGIN {
 
 sub new {
   my $class = shift;
-  my %hsh=(color=>Imager::Color->new(255,0,0,0),
+  my %hsh=(color=>Imager::Color->new(255,0,0,255),
 	   size=>15,
 	   @_);
 

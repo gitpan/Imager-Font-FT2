@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Imager-Font-FT2
-version:            0.82
+version:            0.83
 abstract:           FreeType 2 font driver for Imager
 author:
     - Tony Cook <tonyc@cpan.org>
