@@ -38,7 +38,7 @@ else {
   $opts{TYPEMAPS} = [ Imager::ExtUtils->typemap ];
 
   # Imager required configure through use
-  my @Imager_req = ( Imager => "0.86" );
+  my @Imager_req = ( Imager => "0.94" );
   if ($MM_ver >= 6.46) {
     $opts{META_MERGE} =
       {
@@ -61,6 +61,7 @@ else {
     $opts{PREREQ_PM} =
       {
        @Imager_req,
+       'Scalar::Util' => 1.00,
        XSLoader => 0,
       };
   }

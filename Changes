@@ -1,3 +1,15 @@
+Imager-Font-FT2 0.88
+====================
+
+ - report the library version during testing
+
+Imager-Font-FT2 0.87
+====================
+
+Distributed with Imager 0.93_01
+
+ - improve thread safety
+
 Imager-Font-FT2 0.86
 ====================
 
