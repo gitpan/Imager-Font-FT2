@@ -1,3 +1,26 @@
+Imager-Font-FT2 0.91
+====================
+
+ - depend on Imager 0.95.
+
+Imager-Font-FT2 0.90
+====================
+
+Released as part of Imager 0.94_02.
+
+ - fix some mismatched format strings/types
+
+ - enable the debug log for t/t90std.t
+
+Imager-Font-FT2 0.89
+====================
+
+ - update README
+
+ - drawing text to a channel drew with random coverage, since the
+   alpha channel used for the internal call to draw text wasn't
+   initialized.
+
 Imager-Font-FT2 0.88
 ====================
 
