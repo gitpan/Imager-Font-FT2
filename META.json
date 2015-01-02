@@ -4,7 +4,7 @@
       "Tony Cook <tonyc@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.133380",
    "license" : [
       "unknown"
    ],
@@ -22,14 +22,14 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : 0,
+            "ExtUtils::MakeMaker" : "0",
             "Imager" : "0.95",
             "Test::More" : "0.47"
          }
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : 0,
+            "ExtUtils::MakeMaker" : "0",
             "Imager" : "0.95"
          }
       },
@@ -37,7 +37,7 @@
          "requires" : {
             "Imager" : "0.95",
             "Scalar::Util" : "1",
-            "XSLoader" : 0
+            "XSLoader" : "0"
          }
       }
    },
@@ -51,5 +51,5 @@
          "url" : "git://git.imager.perl.org/imager.git"
       }
    },
-   "version" : "0.92"
+   "version" : "0.93"
 }
